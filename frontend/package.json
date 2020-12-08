@@ -1,0 +1,22 @@
+{
+  "name": "frontend_guidelines",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rashid Bairamov",
+  "license": "ISC",
+  "dependencies": {
+    "@fancyapps/fancybox": "^3.5.7",
+    "bootstrap": "^4.5.3",
+    "fastclick": "^1.0.6",
+    "jquery": "^3.5.1",
+    "jquery.mmenu": "^7.3.3",
+    "js-offcanvas": "^1.2.9",
+    "popper.js": "^1.16.1",
+    "swiper": "^6.3.5",
+    "vanilla-lazyload": "^17.3.0"
+  }
+}

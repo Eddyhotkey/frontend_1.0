@@ -1,0 +1,19 @@
+include ../mixins/mixins
+
+doctype html
+html(lang="de")
+    include ./../partials/html-head.pug
+    body
+        block header
+            include ../partials/header.pug
+        block content
+            h1#title Lorem ipsum
+            p dolor sit amet.
+
+        block footer
+            include ./../partials/footer.pug
+
+            block footer_js
+                //script(src='js/all.js')
+
+            include ./../partials/html-foot.pug

@@ -1,0 +1,8 @@
+.idea/
+
+*.sublime-workspace
+*.sublime-project
+
+.DS_Store
+.AppleDouble
+.LSOverride

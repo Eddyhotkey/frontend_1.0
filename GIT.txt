@@ -1,0 +1,140 @@
+Git guidelines:
+    1.0 Git installieren.
+     - https://git-scm.com/downloads
+
+    2.0 Git konfigurieren
+        2.1 Git name geben:
+            $ git config --global user.name "user_name"
+        2.2 Git email geben:
+            $ git config --global user.email "user_email"
+        2.3 Git Konfiguration prüfen:
+            $ git config --list
+
+    3.0 Git Projekt klonieren:
+        $ git clone %Projekt%
+        3.1 Wenn man im einen neuen Ordner git-repo klonieren möchte, muss man nach der Link eine Leertaste benutzen:
+            $ git clone %Projekt% 'Leertaste' %der Name vom Ordner%
+
+    4.0 github.com ein Konto registrieren und ein neu Repository erstellen
+
+    5.0 SSH-Schlüssel erstellen
+        5.1 SSH-keygen installieren:
+            $ ssh-keygen -t rsa
+            - alles was braucht die Konsole überspringen
+        5.2 SSH-Schlüssel generieren:
+            $ cat ~/.ssh/id_rsa.pub
+        5.3 SSH-Schlüssel kopieren
+        5.4 SSH-Schlüssel im github-Konto hinzufügen
+            : github.com -> Konto-icon -> settings -> ssh-key -> new SSH key
+
+    6.0 Neus Repo erstellen.
+        6.1 Im Ordner, wo wir Repo aufbauen möchten, eingeben:
+            $ git init
+            $ git add .
+            $ git commit -m 'Initial commit'
+            $ git remote add origin %REPO SSH LINK%
+            $ git push -u origin master
+
+    7.0 Änderungen in Git.
+        - $ git status // wenn etwas geändert wurde, kann man mit dieser Ausgabe sich informieren, was geändert wurde.
+        7.1 Änderungen anschauen:
+            - $ git diff // zeigt was genau geändert wurde
+            - $ git diff index.html
+            - $ git diff css/main.css
+        7.2 Änderungen löschen:
+            - $ git restore %Dateiname%
+
+    8.0 Commit was ist das.
+        8.1 - $ git status
+        8.2 die Datei für Commit auswählen:
+            - $ git add %Dateiname%
+            oder
+            - $ git add . // um alle Dateien zu wählen
+        8.3 Commit machen:
+            - $ git commit -m '%ein Kommentar%'
+        8.4 Commit anschauen:
+            - $ git log
+        8.5 Commit-Änderungen ansehen:
+            - $ git show %commit-hash%
+        8.6 Was muss man machen, wenn eine neue Datei aufgebaut wurde:
+            - $ git add '%Dateiname%'
+            - $ git commit -m '%commit%'
+        8.7 Was muss man machen, wenn der Dateiname geändert wurde:
+            - $ git status // prüfen was geändert wurde
+            - $ git add .
+            - $ git commit -m '%commit%'
+        8.8 Wenn eine Datei gelöscht wurde:
+            - git status // wird geprüft dass die Datei gelöscht wurde
+            - git add .
+            - git commit - m '%commit%''
+        8.9 Wenn eine Datei aus "add" gelöscht werden muss:
+            - $ git reset %Dateiname%
+        8.10 Commits Umbenennung (переименование)
+            - $ git commit --amend -m '%neues Commit%'
+
+    Если были внесены изменения в файл и была использована команда git add, а потом внесены новые правки до того
+    как файл был закомичен надо заново использовать команду git add, в противном случае новые изменения не будут
+    отображены в коммите. Wenn Änderungen an der Datei vorgenommen wurden und der Befehl git add verwendet wurde und
+    vorher neue Bearbeitungen vorgenommen wurden Wie die Datei hochgeladen wurde, muss mit dem Befehl git add
+    wiederverwendet werden, sonst werden keine neuen Änderungen vorgenommen. werden auf dem Commit angezeigt.
+
+        8.11 Commit zurücksetzen
+            - $ git log
+            - Commit wählen
+            - Hash kopieren
+            - $ git revert --no-edit %commit hash%
+
+    9.0 Git log mehr Information
+        - $ git log -p // erweiterte Historienausgabe
+        - $ git log --oneline // kurze Anmerkung
+        - $ git log --stat --graph // Baum-Geschichte
+        Ausgaben werden als Baum, in der Befehlszeile als Pseudografiken übergeben. Plus zeigt eine Liste der geänderten
+        Dateien an. Wir werden zum Commit-Baum zurückkehren, wenn wir mit den Zweigen arbeiten. Выводит коммиты в виде
+        дерева, в командной строке псевдографикой. Плюс выводит список измененных файлов. К дереву коммитов мы вернемся,
+        когда будем работать с ветками.
+        - $ git log --oneline | grep revert // Referenzsuche revert
+        - $ git log --oneline | grep -i revert // Unabhängig vom Register
+        - $ git log index.html // Datei Suche
+        - $ git log --author webdevkin // Author Suche
+        - $ git log --after='2020-03-09 15:30' --before='2020-03-09 16:00' //Suche nach Datumsbereich
+
+    10.0 Git push und Git pull.
+        10.1 Git Push:
+            Normalerweise git push braucht man um die Änderungen mit Kollegen zu teilen und die Dateien nicht zu
+            verlieren.
+            - $ git status
+            - $ git push origin master // push - aussende, origin - wohin zum Server, master - was, ein Hauptzweig
+        10.2 Git Pull
+            Dies ist das Herunterladen von Daten vom Server. Es sieht aus wie das Klonen eines Repositorys, aber der
+            Unterschied ist, dass nicht alle Commits heruntergeladen werden, sondern nur neue.
+            - $ git pull origin master
+            - $ git pull --rebase origin master
+
+    11.0 Git Branch
+        11.1 Neues Branch aufbauen:
+            - $ git checkout -b %Branchname%
+        11.2 Branch wählen:
+            - $ git checkout %branchname% // master
+        11.3 Branch definieren:
+            - $ git branch // zeigt wo jetzt wir sind und wie fiel branches jetzt gibt
+            - $ git branch -v // zeigt mit letztem Commit
+        11.4 Branch Umbenennung
+            - $ git branch -m %neuer branchname%
+        11.5 Branch löschen:
+            - $ git branch -d %branchname%
+            - $ git branch -D %branchname%
+        11.6 Branch aus dem Server löschen:
+            - $ git push origin --delete %branch-name%
+
+    12.0 Branch in Server
+        12.1 Branches im Server ansehen:
+            - $ git branch -r // Branches im Server
+            - $ git branch -a // alle Branches
+        12.2 Neue Branches aus dem Server bekommen:
+            - $ git fetch
+
+    13.0 Git-merge
+        - $ git checkout master
+        - $ git pull --rebase origin master
+        - $ git merge %branch-name%
+        - $ git push origin master
